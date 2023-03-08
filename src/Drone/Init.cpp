@@ -23,7 +23,7 @@ Drone::Drone(const ros::NodeHandle& _nodeHandle):
     odom_pub(nh.advertise<nav_msgs::Odometry>("odom", 50)),
 
 
-    sub_Aruco_pose(nh.subscribe<geometry_msgs::Vector3Stamped>("/aruco_single/position", 10, &Drone::cb_Aruco_pose, this)),
+    // sub_Aruco_pose(nh.subscribe<geometry_msgs::Vector3Stamped>("/aruco_single/position", 10, &Drone::cb_Aruco_pose, this)),
 
 
 

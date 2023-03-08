@@ -29,7 +29,7 @@
 
 #include <darknet_ros_msgs/BoundingBoxes.h>
 
-#include <aruco_msgs/Marker.h>
+// #include <aruco_msgs/Marker.h>
 
 
 class Drone{

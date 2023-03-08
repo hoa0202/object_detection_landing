@@ -1,27 +1,27 @@
 #include <drone.h>
-void Drone::cb_Aruco_pose(const geometry_msgs::Vector3Stamped::ConstPtr &aruco_m)
-{
-    geometry_msgs::Vector3 Aruco_pos = aruco_m->vector;
+// void Drone::cb_Aruco_pose(const geometry_msgs::Vector3Stamped::ConstPtr &aruco_m)
+// {
+//     geometry_msgs::Vector3 Aruco_pos = aruco_m->vector;
 
 
-    x_probability_max = 1.2;
-    x_probability_min = 0.8;
-    y_probability_max = 1.2;
-    y_probability_min = 0.8;
-    z_probability_angular = 1;
-    z_percentage = 0.1;
+//     x_probability_max = 1.2;
+//     x_probability_min = 0.8;
+//     y_probability_max = 1.2;
+//     y_probability_min = 0.8;
+//     z_probability_angular = 1;
+//     z_percentage = 0.1;
 
 
-    double poseX;
+//     double poseX;
 
-    poseX = Aruco_pos.x;
+//     poseX = Aruco_pos.x;
 
-    long int xDifferenceAbsolute = labs(labs(Aruco_pos.x) - 0.0); //바운딩 박스 중심으로부터 카메라 X 오차의 절대값 //labs() : return absolute value
-    long int yDifferenceAbsolute = labs(labs(Aruco_pos.y) - 0.25); //바운딩 박스 중심으로부터 카메라 Y 오차의 절대값
+//     long int xDifferenceAbsolute = labs(labs(Aruco_pos.x) - 0.0); //바운딩 박스 중심으로부터 카메라 X 오차의 절대값 //labs() : return absolute value
+//     long int yDifferenceAbsolute = labs(labs(Aruco_pos.y) - 0.25); //바운딩 박스 중심으로부터 카메라 Y 오차의 절대값
 
 
-    return;
-}
+//     return;
+// }
 void Drone::cb_Box(const darknet_ros_msgs::BoundingBoxes::ConstPtr &box_msg)
 {
     if (!nh.getParam("/drone/isTracking", isTracking))
@@ -156,25 +156,25 @@ void Drone::cb_Box(const darknet_ros_msgs::BoundingBoxes::ConstPtr &box_msg)
                                 
                             }
                         }
-                        // else// if (current_pose.pose.position.z < 3)// gimbal check == 1;
-                        // {
-                        //     cnt_speed=1.0;//0.5
-                        //     if (yMiddle < (int)(_frameMiddleY * y_probability_min))// 중앙정렬
-                        //     {
-                        //         move_check = 6;//전진
-                        //         ROS_INFO("Go straight3 %d [%ld < %d]", move_check, yMiddle, (int)(_frameMiddleY * y_probability_min));
-                        //     }
-                        //     else if (yMiddle > (int)(_frameMiddleY * y_probability_max))
-                        //     {
-                        //         move_check = 7;//후진
-                        //         ROS_INFO("Go Back3 %d [%ld > %d]", move_check, yMiddle, (int)(_frameMiddleY * y_probability_max));
-                        //     }
-                        //     else // 
-                        //     {
-                        //         move_check = 3;//하강
-                        //         ROS_INFO("Go Down3 %d [%d < %ld < %d]", move_check, (int)(_frameMiddleY * y_probability_min), yMiddle, (int)(_frameMiddleY * y_probability_max));
-                        //     }
-                        // }
+                        else// if (current_pose.pose.position.z < 3)// gimbal check == 1;
+                        {
+                            cnt_speed=1.0;//0.5
+                            if (yMiddle < (int)(_frameMiddleY * y_probability_min))// 중앙정렬
+                            {
+                                move_check = 6;//전진
+                                ROS_INFO("Go straight3 %d [%ld < %d]", move_check, yMiddle, (int)(_frameMiddleY * y_probability_min));
+                            }
+                            else if (yMiddle > (int)(_frameMiddleY * y_probability_max))
+                            {
+                                move_check = 7;//후진
+                                ROS_INFO("Go Back3 %d [%ld > %d]", move_check, yMiddle, (int)(_frameMiddleY * y_probability_max));
+                            }
+                            else // 
+                            {
+                                move_check = 3;//하강
+                                ROS_INFO("Go Down3 %d [%d < %ld < %d]", move_check, (int)(_frameMiddleY * y_probability_min), yMiddle, (int)(_frameMiddleY * y_probability_max));
+                            }
+                        }
                     }
                 }
                 else    //object 가 중앙에 오도록 yaw 값 수정
@@ -192,10 +192,10 @@ void Drone::cb_Box(const darknet_ros_msgs::BoundingBoxes::ConstPtr &box_msg)
                             
                             ROS_INFO("Clock wise %d, [%ld > %d]", angle_check, xMiddle , (int)(_frameMiddleX * x_probability_max));
                         }
-                        // else// if(current_pose.pose.position.z <= 4){// gimbal check == 1;
-                        // {    move_check = 4; // 우측으로 이동
-                        //     ROS_INFO("Turn Right %d, [%ld > %d]", move_check, xMiddle , (int)(_frameMiddleX * x_probability_max));
-                        // }
+                        else// if(current_pose.pose.position.z <= 4){// gimbal check == 1;
+                        {    move_check = 4; // 우측으로 이동
+                            ROS_INFO("Turn Right %d, [%ld > %d]", move_check, xMiddle , (int)(_frameMiddleX * x_probability_max));
+                        }
                     }
                     else if (xMiddle < (int)(_frameMiddleX * x_probability_min))
                     { // turn right (반시계방향)
@@ -206,11 +206,11 @@ void Drone::cb_Box(const darknet_ros_msgs::BoundingBoxes::ConstPtr &box_msg)
                             printf("1");
                             ROS_INFO("UnClock wise %d, [%ld < %d]", angle_check, xMiddle , (int)(_frameMiddleX * x_probability_min));
                         }
-                        // else// if(current_pose.pose.position.z < 3){// gimbal check == 1;
-                        // {    move_check = 5; // 좌측으로 이동
-                        //     printf("2");
-                        //     ROS_INFO("Turn Left %d, [%ld > %d]", move_check, xMiddle , (int)(_frameMiddleX * x_probability_max));
-                        // }
+                        else// if(current_pose.pose.position.z < 3){// gimbal check == 1;
+                        {    move_check = 5; // 좌측으로 이동
+                            printf("2");
+                            ROS_INFO("Turn Left %d, [%ld > %d]", move_check, xMiddle , (int)(_frameMiddleX * x_probability_max));
+                        }
                     }
                 }
 
