@@ -1,0 +1,4 @@
+<launch>
+    <node name = "drone_node" pkg="offboard" type="drone_node" output="screen"/>
+    <!--<node name = "gimbal_node" pkg="offboard" type="gimbal_node" output="screen"/>-->
+</launch>
