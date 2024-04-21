@@ -1,3 +1,4 @@
+![image](https://github.com/hoa0202/object_detection_landing/assets/67028730/0f7491ee-fd11-4229-a06f-c4af4ec1583e)
 # Object Detection Auto Landing with Yolo v4
 This project involves recognizing a landing pad from a long distance and autonomously landing on it.
 ![image](https://github.com/hoa0202/object_detection_landing/assets/67028730/b17315fe-f0da-441a-8f4a-321cb3f39131)
