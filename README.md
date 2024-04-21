@@ -32,3 +32,6 @@ m : mode change (mission mode) \
 0 : tracking mode (on/off) \
 8 : gimbal pitch up side \
 9 : gimbal pitch down side
+
+# Paper
+- 강호현, and 신수용. "짐벌 카메라 각도 제어와 객체 인식을 사용한 UAV 자동착륙 시스템." 한국통신학회논문지 48.2 (2023): 241-248.
