@@ -15,14 +15,16 @@ Host Ubuntu 18.04 \
 jetson Ubuntu 18.04 \
 darknet ros yolo v4 tiny (https://github.com/Tossy0423/darknet_ros.git)
 
-# Installation
+# Installation & Usage
 ```
-mkdir -p catkin_ws/src && catkin_ws/src \
-git clone https://github.com/hoa0202/object_detection_landing.git \
+mkdir -p catkin_ws/src && catkin_ws/src
+git clone https://github.com/hoa0202/object_detection_landing.git
+cd ..
+catkin_make
 
-source ~/catkin_ws/devel/setup.bash \
+source ~/catkin_ws/devel/setup.bash
 
-roslaunch object_detection_landing drone_ctrl.launch \
+roslaunch object_detection_landing drone_ctrl.launch
 ```
 # Command
 q : exit \
