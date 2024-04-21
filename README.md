@@ -1,6 +1,14 @@
 # Object Detection Auto Landing with Yolo v4
-object detection landing
+This project involves recognizing a landing pad from a long distance and autonomously landing on it.
+![image](https://github.com/hoa0202/object_detection_landing/assets/67028730/b17315fe-f0da-441a-8f4a-321cb3f39131)
 
+- The initial camera angle starts at 60 degrees.
+- Upon reaching a specific altitude, the drone moves forward by a calculated distance and then adjusts the camera angle to 90 degrees.
+- After making fine adjustments, it lands.
+
+![image](https://github.com/hoa0202/object_detection_landing/assets/67028730/21e9604e-d43e-43f4-9fc0-50d735aec000)
+
+- The drone's position is adjusted using YOLO v4 to center the landing pad in the camera's view.
 
 # Environment
 Host Ubuntu 18.04 \
